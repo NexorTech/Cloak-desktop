@@ -38,4 +38,6 @@ module.exports = {
   optimization: {
     minimize: isProd,
   },
+  mode: isProd ? 'production' : 'development',
 };
+;
