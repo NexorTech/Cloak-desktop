@@ -4,6 +4,8 @@
 
 name: Session Desktop
 
+permissions:
+  contents: write
 on:
   push:
     branches:
