@@ -1,0 +1,11 @@
+.inbox {
+  height: 100%;
+  overflow: hidden;
+  transition: none;
+}
+
+.inbox.index {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-primary-color);
+}

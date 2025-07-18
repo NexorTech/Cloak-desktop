@@ -1,0 +1,26 @@
+build/**
+dist/**
+mnemonic_languages/**
+
+# editor
+.vscode/**
+.vscrof/**
+
+# TypeScript generated files
+ts/**/*.js
+**/ts/**/*.js
+
+preload.js
+stylesheets/dist/
+compiled.d.ts
+.eslintrc.js
+playwright.config.js
+
+ts/localization/locales.ts
+
+about_preload.js
+commitlint.config.js
+libsession.worker.config.js
+password_preload.js
+sass.config.js
+utils.worker.config.js

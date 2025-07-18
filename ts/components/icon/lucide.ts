@@ -1,0 +1,87 @@
+export enum LUCIDE_ICONS_UNICODE {
+  ARROW_UP = '',
+  AT_SIGN = '',
+  BAN = '',
+  BUG = '',
+  CHECK = '',
+  CHECK_CHECK = '',
+  CHEVRON_DOWN = '',
+  CHEVRON_LEFT = '',
+  CHEVRON_RIGHT = '',
+  CHEVRON_UP = '',
+  CIRCLE_ARROW_DOWN = '',
+  CIRCLE_CHECK = '',
+  CIRCLE_ELLIPSES = '',
+  CIRCLE_HELP = '',
+  CIRCLE_PLUS = '',
+  CLAPERBOARD = '',
+  COPY = '',
+  DOWNLOAD = '',
+  EXTERNAL_LINK_ICON = '',
+  EYE = '',
+  EYE_OFF = '',
+  FILE = '',
+  GLOBE = '',
+  HEART = '',
+  IMAGE = '',
+  INFO = '',
+  LINK = '',
+  LOCK_KEYHOLE = '',
+  LOG_OUT = '',
+  MAXIMIZE = '',
+  MESSAGE_SQUARE = '',
+  MESSAGE_SQUARE_WARNING = '',
+  MIC = '',
+  MOON = '',
+  OCTAGON_ALERT = '',
+  OCTAGON_X = '',
+  PAINTBRUSH_VERTICAL = '',
+  PAUSE = '',
+  PENCIL = '',
+  PHONE = '',
+  PHONE_CALL = '',
+  PHONE_INCOMING = '',
+  PHONE_MISSED = '',
+  PHONE_OFF = '',
+  PHONE_OUTGOING = '',
+  PIN = '',
+  PIN_OFF = '',
+  PLAY = '',
+  PLUS = '',
+  QR_CODE = '',
+  RECTANGLE_ELLIPSES = '',
+  REFRESH_CW = '',
+  REPLY = '',
+  SEARCH = '',
+  SETTINGS = '',
+  SMILE_PLUS = '',
+  SQUARE = '',
+  SQUARE_CODE = '',
+  SUN_MEDIUM = '',
+  TIMER = '',
+  TRASH2 = '',
+  USER_ROUND = '',
+  USER_ROUND_CHECK = '',
+  USER_ROUND_PEN = '',
+  USER_ROUND_PLUS = '',
+  USER_ROUND_X = '',
+  USERS_ROUND = '',
+  VOLUME_2 = '',
+  VOLUME_OFF = '',
+  X = '',
+}
+
+export type WithLucideUnicode = { unicode: LUCIDE_ICONS_UNICODE };
+export type WithOptLucideUnicode = Partial<WithLucideUnicode>;
+
+/**
+ * Used for rendering icons inside of the Localizer component
+ * @note Current: Lucide v0.488.0
+ * @note The Lucide Icon font must be installed locally to see these icons.
+ * @note Download from https://github.com/lucide-icons/lucide/releases
+ */
+export const LUCIDE_INLINE_ICONS = {
+  EXTERNAL_LINK_ICON: `<span role='img' aria-label='external link icon'>${LUCIDE_ICONS_UNICODE.EXTERNAL_LINK_ICON}</span>`,
+};
+
+export type LucideInlineIconKeys = keyof typeof LUCIDE_INLINE_ICONS;

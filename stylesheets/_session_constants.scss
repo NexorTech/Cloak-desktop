@@ -1,0 +1,27 @@
+// Mixins
+
+@mixin text-highlight($color) {
+  background-color: $color;
+  padding: var(--margins-xs) var(--margins-sm);
+  border-radius: 3px;
+  display: inline-block;
+}
+
+@mixin color-svg($svg, $color) {
+  -webkit-mask: url($svg) no-repeat center;
+  -webkit-mask-size: 100%;
+  background-color: $color;
+}
+
+$session-subtle-factor: 0.6;
+
+// Animations
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,102 @@
+diff --git a/node_modules/os-locale/execa.js b/node_modules/os-locale/execa.js
+new file mode 100644
+index 0000000..b8e0294
+--- /dev/null
++++ b/node_modules/os-locale/execa.js
+@@ -0,0 +1,29 @@
++// Mini wrapper around child_process to make it behave a little like execa
++
++const { promisify } = require('util');
++const childProcess = require('child_process');
++
++const execFile = promisify(childProcess.execFile);
++
++/**
++@param  {string} command
++@param  {string[]} args
++@returns Promise<import('child_process').ChildProcess>
++*/
++async function execa(command, args) {
++  const child = await execFile(command, args, { encoding: 'utf-8' });
++  child.stdout = child.stdout.trim();
++  return child;
++}
++
++/**
++@param  {string} command
++@param  {string[]} args
++@returns string
++*/
++function execaSync(command, args) {
++  return childProcess.execFileSync(command, args, { encoding: 'utf-8' }).trim();
++}
++
++module.exports = execa;
++module.exports.sync = execaSync;
+diff --git a/node_modules/os-locale/index.js b/node_modules/os-locale/index.js
+index 4500f22..9921445 100644
+--- a/node_modules/os-locale/index.js
++++ b/node_modules/os-locale/index.js
+@@ -1,5 +1,5 @@
+ 'use strict';
+-const execa = require('execa');
++const execa = require('./execa');
+ const lcid = require('lcid');
+ const mem = require('mem');
+
+diff --git a/node_modules/os-locale/readme.md b/node_modules/os-locale/readme.md
+deleted file mode 100644
+index aec4e23..0000000
+--- a/node_modules/os-locale/readme.md
++++ /dev/null
+@@ -1,50 +0,0 @@
+-# os-locale [![Build Status](https://travis-ci.org/sindresorhus/os-locale.svg?branch=master)](https://travis-ci.org/sindresorhus/os-locale)
+-
+-> Get the system [locale](https://en.wikipedia.org/wiki/Locale_(computer_software))
+-
+-Useful for localizing your module or app.
+-
+-POSIX systems: The returned locale refers to the [`LC_MESSAGE`](http://www.gnu.org/software/libc/manual/html_node/Locale-Categories.html#Locale-Categories) category, suitable for selecting the language used in the user interface for message translation.
+-
+-## Install
+-
+-```
+-$ npm install os-locale
+-```
+-
+-## Usage
+-
+-```js
+-const osLocale = require('os-locale');
+-
+-(async () => {
+-	console.log(await osLocale());
+-	//=> 'en-US'
+-})();
+-```
+-## API
+-
+-### osLocale(options?)
+-
+-Returns a `Promise` for the locale.
+-
+-### osLocale.sync(options?)
+-
+-Returns the locale.
+-
+-#### options
+-
+-Type: `object`
+-
+-##### spawn
+-
+-Type: `boolean`\
+-Default: `true`
+-
+-Set to `false` to avoid spawning subprocesses and instead only resolve the locale from environment variables.
+-
+-## os-locale for enterprise
+-
+-Available as part of the Tidelift Subscription.
+-
+-The maintainers of os-locale and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-os-locale?utm_source=npm-os-locale&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
